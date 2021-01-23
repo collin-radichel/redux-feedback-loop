@@ -7,6 +7,7 @@ import Understanding from '../Understanding/Understanding'
 import Support from '../Support/Support'
 import Comments from '../Comments/Comments'
 import Review from '../Review/Review'
+import Success from '../Success/Success'
 
 function App() {
 
@@ -18,16 +19,22 @@ function App() {
       </header>
       <main>
       <Route exact path ="/">
-        <Feeling/>
+        <Feeling />
       </Route>
       <Route path ="/understanding">
-        <Understanding/>
+        <Understanding />
       </Route>
       <Route path ="/support">
-        <Support/>
+        <Support />
       </Route>
       <Route path ="/comments">
-        <Comments/>
+        <Comments />
+      </Route>
+      <Route path ="/review">
+        <Review />
+      </Route>
+      <Route path ="/success">
+        <Success />
       </Route>
       </main>
     </div>
