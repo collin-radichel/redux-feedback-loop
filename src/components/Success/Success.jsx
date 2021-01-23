@@ -12,7 +12,7 @@ function Success () {
 
     return (
         <>
-        <h1>Congrats!  Click the button below to go back to the Home pag</h1>
+        <h1>Congrats!  Click the button below to go back to the Home page</h1>
         <Button onClick={() => handleSubmit()}>BACK TO START</Button>
         </>
     )
