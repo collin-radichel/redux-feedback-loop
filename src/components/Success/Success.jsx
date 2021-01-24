@@ -5,6 +5,8 @@ import Button from "@material-ui/core/Button";
 function Success() {
   const history = useHistory();
 
+  // onClick of 'Back to Start' button
+  // bring the user back to / (which is the feeling page)
   const handleSubmit = () => {
     history.push("/");
   };

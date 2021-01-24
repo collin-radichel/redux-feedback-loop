@@ -12,6 +12,7 @@ function Support() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  // local state for support
   const [support, setSupport] = useState("");
 
   // on change of Select input field, set support
@@ -20,11 +21,15 @@ function Support() {
     setSupport(event.target.value);
   };
 
+  // onClick on submit button run handleSubmit
   const handleSubmit = (support) => {
     if (support > 0) {
+      // form validation: if the support
+      // is more than 0 dispatch and history.push to comments page
       dispatch({ type: "ADD_SUPPORT", payload: support });
       history.push("/comments");
     } else {
+      // form validation, if the user selects 'none'
       Swal.fire({
         title: "Please select an input value",
       });

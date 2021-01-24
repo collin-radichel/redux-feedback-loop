@@ -23,7 +23,8 @@ function Understanding() {
 
   // onClick on submit button run handleSubmit
   const handleSubmit = (understanding) => {
-  // form validation if the understanding is more than 0 dispatch and history.push to next page
+  // form validation: if the understanding
+  // is more than 0 dispatch and history.push to support page
     if (understanding > 0) {
       dispatch({ type: "ADD_UNDERSTANDING", payload: understanding });
       history.push("/support");

@@ -9,6 +9,9 @@ import Comments from '../Comments/Comments'
 import Review from '../Review/Review'
 import Success from '../Success/Success'
 
+
+// App is filled with Routes to different views
+// in this Application
 function App() {
 
   return (

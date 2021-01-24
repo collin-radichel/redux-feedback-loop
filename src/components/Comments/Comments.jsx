@@ -9,6 +9,7 @@ function Comments() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  // local state for comments
   const [comments, setComments] = useState("");
 
   // on change of TextField input, set comments
@@ -17,7 +18,9 @@ function Comments() {
     setComments(event.target.value);
   };
 
+  // onClick on submit button run handleSubmit
   const handleSubmit = (comments) => {
+    // dispatch and history.push to review page
     history.push("/review");
     dispatch({ type: "ADD_COMMENTS", payload: comments });
   };

@@ -23,7 +23,8 @@ function Feeling() {
 
   // onClick on submit button run handleSubmit
   const handleSubmit = (feeling) => {
-    // form validation if the feeling is more than 0 dispatch and history.push to next page
+    // form validation: if the feeling
+    // is more than 0 dispatch and history.push to understanding page
     if (feeling > 0) {
       dispatch({ type: "ADD_FEELING", payload: feeling });
       history.push("/understanding");
