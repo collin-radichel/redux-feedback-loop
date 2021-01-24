@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 20px;
 }
 
 .App-header {
@@ -20,4 +21,8 @@
 
 h4 {
   font-style: italic;
+}
+
+.submitBtn {
+  margin: 10px;
 }

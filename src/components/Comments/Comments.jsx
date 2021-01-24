@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
 
 function Comments() {
   const dispatch = useDispatch();
@@ -10,6 +11,8 @@ function Comments() {
 
   const [comments, setComments] = useState("");
 
+  // on change of TextField input, set comments
+  // to event.target.value
   const handleChange = (event) => {
     setComments(event.target.value);
   };
@@ -22,20 +25,25 @@ function Comments() {
   return (
     <>
       <h1>Would you like to leave any comments for us today?</h1>
-      <TextField
-        id="outlined-basic"
-        label="Outlined"
-        variant="outlined"
-        onChange={handleChange}
-        value={comments}
+      <Card>
+        <TextField
+          id="outlined-textarea"
+          placeholder="Comments"
+          multiline
+          variant="outlined"
+          onChange={handleChange}
+          value={comments}
         />
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => handleSubmit(comments)}
-      >
-        SUBMIT
-      </Button>
+        <br />
+        <br />
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleSubmit(comments)}
+        >
+          SUBMIT
+        </Button>
+      </Card>
     </>
   );
 }

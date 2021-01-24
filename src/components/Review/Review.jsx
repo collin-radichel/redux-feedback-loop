@@ -3,34 +3,57 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function Review() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  // store the data from reducers in variables using useSelector
   const feeling = useSelector((store) => store.feelingReducer);
   const understanding = useSelector((store) => store.understandingReducer);
   const support = useSelector((store) => store.supportReducer);
   const comments = useSelector((store) => store.commentsReducer);
 
-  
+  // function to run when submit feedback button is clicked.
+  // fires sweetalert2 onClick and gives you the option
+  // to select 'Save' or 'Don't Save'
+  // 'Save' sends an axios post request and populates the database
+  // 'Don't Save' takes you back to the review page with your data still in the reducers
   const handleSubmit = () => {
-    axios
-      .post("/feedback", {
-        feeling: feeling,
-        understanding: understanding,
-        support: support,
-        comments: comments,
-      })
-      .then((response) => {
-        console.log(response);
-        dispatch({type : "CLEAR"})
-        history.push("/success");
-      })
-      .catch((error) => {
-        alert("Error adding feedback to DB!!");
-        console.log(error);
-      });
+    Swal.fire({
+      title: "Do you want to save this as your feedback?",
+      text:
+      `Feeling: ${feeling}
+        Understanding: ${understanding}
+        Support: ${support}
+        Comments: ${comments}`,
+      showDenyButton: true,
+      confirmButtonText: `Save`,
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+        axios
+          .post("/feedback", {
+            feeling: feeling,
+            understanding: understanding,
+            support: support,
+            comments: comments,
+          })
+          .then((response) => {
+            console.log(response);
+            dispatch({ type: "CLEAR" });
+            history.push("/success");
+          })
+          .catch((error) => {
+            alert("Error adding feedback to DB!!");
+            console.log(error);
+          });
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
   }; //end handleSubmit
 
   return (
@@ -45,7 +68,7 @@ function Review() {
         color="primary"
         onClick={() => handleSubmit()}
       >
-        SUBMIT
+        SUBMIT FEEDBACK
       </Button>
     </>
   );
