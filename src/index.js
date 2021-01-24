@@ -7,6 +7,8 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import logger from "redux-logger";
 
+// reducer to hold data from the users input
+// on the Feelings page
 const feelingReducer = (state = 0, action) => {
   switch (action.type) {
     case "ADD_FEELING":
@@ -18,6 +20,8 @@ const feelingReducer = (state = 0, action) => {
   }
 };
 
+// reducer to hold data from the users input
+// on the Understanding page
 const understandingReducer = (state = 0, action) => {
   switch (action.type) {
     case "ADD_UNDERSTANDING":
@@ -29,6 +33,8 @@ const understandingReducer = (state = 0, action) => {
   }
 };
 
+// reducer to hold data from the users input
+// on the Support page
 const supportReducer = (state = 0, action) => {
   switch (action.type) {
     case "ADD_SUPPORT":
@@ -40,6 +46,8 @@ const supportReducer = (state = 0, action) => {
   }
 };
 
+// reducer to hold data from the users input
+// on the Comments page
 const commentsReducer = (state = "", action) => {
   switch (action.type) {
     case "ADD_COMMENTS":
@@ -51,6 +59,9 @@ const commentsReducer = (state = "", action) => {
   }
 };
 
+
+// combines the reducers into one reducer to rule them all:
+// redux store
 const reduxStore = createStore(
   combineReducers({
     feelingReducer,
@@ -61,6 +72,7 @@ const reduxStore = createStore(
   applyMiddleware(logger)
 );
 
+//  Wrap App in provider
 ReactDOM.render(
   <Provider store={reduxStore}>
     <App />
