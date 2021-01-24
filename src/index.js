@@ -11,6 +11,8 @@ const feelingReducer = (state = 0, action) => {
   switch (action.type) {
     case "ADD_FEELING":
       return action.payload;
+    case "CLEAR":
+      return (state = 0);
     default:
       return state;
   }
@@ -20,36 +22,41 @@ const understandingReducer = (state = 0, action) => {
   switch (action.type) {
     case "ADD_UNDERSTANDING":
       return action.payload;
+    case "CLEAR":
+      return (state = 0);
     default:
       return state;
   }
 };
 
 const supportReducer = (state = 0, action) => {
-    switch (action.type) {
-        case "ADD_SUPPORT":
-            return action.payload;
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case "ADD_SUPPORT":
+      return action.payload;
+    case "CLEAR":
+      return (state = 0);
+    default:
+      return state;
+  }
 };
 
-const commentsReducer = (state = 0, action) => {
-    switch (action.type) {
-        case "ADD_COMMENTS":
-            return action.payload;
-        default:
-            return state;
-    }
+const commentsReducer = (state = "", action) => {
+  switch (action.type) {
+    case "ADD_COMMENTS":
+      return action.payload;
+    case "CLEAR":
+      return (state = "");
+    default:
+      return state;
+  }
 };
-
 
 const reduxStore = createStore(
   combineReducers({
     feelingReducer,
     understandingReducer,
     supportReducer,
-    commentsReducer
+    commentsReducer,
   }),
   applyMiddleware(logger)
 );

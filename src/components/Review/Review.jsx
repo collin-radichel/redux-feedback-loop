@@ -6,6 +6,7 @@ import axios from "axios";
 
 function Review() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const feeling = useSelector((store) => store.feelingReducer);
   const understanding = useSelector((store) => store.understandingReducer);
@@ -23,6 +24,7 @@ function Review() {
       })
       .then((response) => {
         console.log(response);
+        dispatch({type : "CLEAR"})
         history.push("/success");
       })
       .catch((error) => {
