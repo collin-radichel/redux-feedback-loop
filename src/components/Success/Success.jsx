@@ -13,7 +13,7 @@ function Success() {
 
   return (
     <>
-      <h1>Congrats! Click the button below to go back to the Home page</h1>
+      <h1>Congrats! Click the button below to go back to start.</h1>
       <Button
         variant="contained"
         color="primary"
