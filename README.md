@@ -2,7 +2,11 @@
 
 ## Description
 
-A full-stack feedback app that takes input from a user.  The user is given a chance to review their feedback before they submit.  Feedback is stored in a database.  Input validation requires the user to enter a value for each page in the form before continuing, with the exception of the comments page, which does not require an input.
+A full-stack application that asks a user to enter daily feedback about their experience in class that day.  Input validation requires the user to enter a value for each page in the form before continuing, with the exception of the comments page, which does not require an input.  The user is given a chance to review their feedback before they submit.  When the user submits and clicks 'save' their feedback is stored in a database.
+
+## Features to be added
+
+Admin page to view/edit/delete feedback stored in database
 
 ## Installation
 
